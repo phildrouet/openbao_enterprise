@@ -30,16 +30,27 @@ of "So can you." — this reader already picked OpenBao).
 - Support copy stays generic: no SLA or severity tables, no response-time
   promises (nothing about 24/7 or "3am" — unsanctioned).
 - No pricing figures. The scoping section describes the model, not
-  numbers; "we will help you find out before anything is quoted".
+  numbers.
+- CVE attribution (Phil, 2026-08-26): never cite the upstream CVE
+  count or imply ControlPlane's role in disclosures — 2025 OpenBao
+  CVEs were responsibly disclosed by EXTERNAL researchers; ControlPlane
+  sits on the patching side. The cp-website FAQ's "5 CVEs" figure is
+  also stale (registries show at least six). Our claimable ground is
+  the VEX statement and the named response, nothing more.
 - British spelling; no em-dashes in rendered copy; no crutch words.
-- The honesty section ("When the community edition is all you need") is
-  the family's trust play — do not cut it without recording a deviation.
+- DEVIATION (Phil, 2026-08-26): the community-is-enough concession is
+  FULLY REMOVED from this page family on Phil's instruction — first the
+  main-page honesty section, then the thanks-page soft line. Unlike the
+  campaign family, this page carries no staying-put concession anywhere;
+  reps should still say it in conversation where true, but the page
+  no longer volunteers it.
 
 ## Open items
 
-- **Naming: the close motif is "Covered when ready"** (family pattern:
-  Merge / Reconcile / Unseal when ready). Provisional — Phil to confirm
-  or rename.
+- **Naming RESOLVED (Phil, 2026-08-26): the close is "Ready when you
+  are"** — a deliberate inversion of the family's "X when ready" motif
+  (those pages ask the reader to act; a support page promises the vendor
+  stands ready). Closer names the maintainers, not "a company".
 - **Hero graphic is borrowed** from openbao_landing (the unseal motif).
   Works, but a support-specific motif (e.g. the seal held closed) would
   differentiate the two pages if the ads ever run side by side.

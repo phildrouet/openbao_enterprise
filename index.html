@@ -99,8 +99,8 @@
     <img class="logo" src="./controlplane.svg" alt="ControlPlane">
     <p class="eyebrow">For teams already running OpenBao</p>
     <h1>Open source, not on your own</h1>
-    <p class="strap">Enterprise for OpenBao: cover for the platform you already trust.</p>
-    <p class="pitch">You chose OpenBao and it runs. The questions left are the enterprise ones: who patches it, who answers when something breaks, and who does your auditor point to? Enterprise for OpenBao is the answer to all three, on our hardened build or pure upstream. Your estate does not change; what stands behind it does.</p>
+    <p class="strap">Enterprise for OpenBao: nobody is better placed to stand behind your estate.</p>
+    <p class="pitch">Most days you do not need us. Your estate runs, upgrades land, nobody gets paged to fix it. The subscription is for the other days. Who ships the patch when the CVE lands mid change freeze? Who picks up when something breaks? Whose name goes in the audit? Enterprise for OpenBao. Every time. On our hardened build or pure upstream. Your estate does not change; who stands behind it does.</p>
   </div>
 </header>
 
@@ -109,15 +109,15 @@
   <!-- Proof strip -->
   <section class="proof" aria-label="Proof">
     <ul>
-      <li><b>Nvidia, GitLab and SAP have all picked OpenBao.</b><br>Nvidia runs it in production. GitLab built its Secrets Manager on it. SAP trusts it with secrets and PKI.<br>You are in good company.</li>
-      <li><b>OpenBao's top contributor works here.</b><br>Alex Scheel, former chair of the project's Technical Steering Committee, is on ControlPlane's engineering staff. That is the bench behind Enterprise for OpenBao.</li>
+      <li><b>The team behind regulated estates.</b><br>ControlPlane secures cloud native platforms for banking, government, telecommunications and critical infrastructure, and wrote O'Reilly's Hacking Kubernetes.<br>Cover built for estates like yours.</li>
+      <li><b>OpenBao's top contributor works here.</b><br>Alex Scheel, former chair of the project's Technical Steering Committee, heads the OpenBao team at ControlPlane and continues to maintain the project under our stewardship, and ControlPlane sponsors the Developer Working Group chair and core maintainers besides. That is the bench behind Enterprise for OpenBao.</li>
       <li><b>Regulated-environment ready.</b><br>An optional FIPS 140-3 compliant edition (Level 1, via CMVP Certificate #5247).</li>
     </ul>
   </section>
 
   <!-- What the subscription adds -->
   <section aria-label="What the subscription adds">
-    <h2>What changes the day the subscription starts</h2>
+    <h2>More cover. Same estate.</h2>
     <div class="kcl">
       <div class="b gain">
         <span class="pill">Added to your estate</span>
@@ -125,6 +125,7 @@
           <li><b>LTS releases with vulnerability patching.</b> Validated, hardened releases and managed upgrades in place of chasing upstream.</li>
           <li><b>Rapid CVE remediation with signed evidence.</b> A signed VEX statement per assessment: not just a fix, but a document your security team can file.</li>
           <li><b>A named Technical Account Architect.</b> One person who knows your environment and goals, from onboarding through every quarterly review.</li>
+          <li><b>Coverage across time zones.</b> Support spans North America, EMEA and APAC: help in your business hours, wherever they are.</li>
           <li><b>A named accountable party.</b> When the auditor asks who stands behind your secrets platform, you write down a company, not a mailing list.</li>
           <li><b>Supply-chain assurance.</b> You know exactly how the build you run was produced.</li>
           <li><b>The FIPS option.</b> The FIPS 140-3 compliant edition (Level 1, via CMVP Certificate #5247) for estates that need it.</li>
@@ -159,23 +160,30 @@
         <p>The thirteen widely-used auth, secrets and database plugins are supported as standard. Non-core and community plugins can be brought into scope; everything under contract gets the same support levels.</p>
       </div>
     </div>
-    <p class="note">Not sure which plugins are actually mounted versus merely available? We will help you find out before anything is quoted.</p>
   </section>
 
-  <!-- When community support is enough -->
-  <section aria-label="When community support is enough">
-    <h2>When the community edition is all you need</h2>
-    <div class="grid cols-2">
+  <!-- The funded roadmap -->
+  <section aria-label="The funded roadmap">
+    <h2>Your subscription funds the roadmap</h2>
+    <p style="max-width: 680px">Every known gap against Vault Enterprise has a funded development track, with accepted RFCs and target releases. Support revenue is what pays for the engineering, so the cover you buy also closes the gaps you care about.</p>
+    <div class="grid cols-2" style="margin-top: 22px">
       <div class="card">
-        <h3>Keep running community OpenBao if...</h3>
-        <p>Your estate is small, nothing regulated depends on it, and best-effort CVE response from maintainers is a risk you can hold. That is a legitimate position and plenty of teams are in it.</p>
+        <h3>Disaster recovery and horizontal scale</h3>
+        <p>PostgreSQL-backed storage for horizontal scalability and disaster recovery. RFC accepted and in development, targeting v2.7.0 in 2026.</p>
       </div>
       <div class="card">
-        <h3>The conversation changes when...</h3>
-        <p>An audit lands, a regulator asks who stands behind the platform, a CVE arrives during a change freeze, or the one engineer who knows the estate resigns. Those are the days the subscription is priced for.</p>
+        <h3>ControlGroups and external keys</h3>
+        <p>Multi-party approval flows and HSM or KMS backed PKI and Transit keys. RFCs accepted, initial code landed, targeting v2.7.0 in 2026.</p>
+      </div>
+      <div class="card">
+        <h3>FIPS validation</h3>
+        <p>The compliant edition ships today (Level 1, via CMVP Certificate #5247); formal FIPS 140-3 validation is on the funded track, led by the engineer who built the upstream cryptographic layer.</p>
+      </div>
+      <div class="card">
+        <h3>And beyond</h3>
+        <p>Emergency and parallel unseal, a KMIP server, and CEL policy support are in exploration for 2026 to 2027, in the open, through the project's working groups.</p>
       </div>
     </div>
-    <p class="note">If your answers put you in the first column, we will say so and leave you to it.</p>
   </section>
 
   <!-- Form -->
@@ -202,9 +210,9 @@
       </div>
       <label>Your estate, briefly (clusters, plugins in use if you know them, what prompted this)<textarea name="message" rows="4"></textarea></label>
       <div class="close-card" style="margin-top: 18px">
-        <h2>Covered when ready</h2>
-        <p>No migration event, no re-platforming, no lock-in. Your OpenBao, with a company standing behind it.</p>
-        <button class="go-btn" type="submit">Map my support scope</button>
+        <h2>Ready when you are</h2>
+        <p>No migration event, no re-platforming, no lock-in. Your OpenBao, with the people who maintain it standing behind it.</p>
+        <button class="go-btn" type="submit">Cover my estate</button>
         <p class="fine">Prefer to read first? The product page is at <a href="https://control-plane.io/enterprise-for-openbao/">control-plane.io/enterprise-for-openbao</a>.</p>
       </div>
     </form>
