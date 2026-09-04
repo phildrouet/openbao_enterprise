@@ -88,6 +88,7 @@
   .fine { color: var(--soft); font-size: 13.5px; margin-top: 18px; }
   footer { border-top: 1px solid var(--ring); padding: 28px 0 40px; color: var(--soft); font-size: 13px; margin-top: 80px; }
   a { color: #5FB7FF; }
+  .hp { position: absolute; left: -9999px; }
 </style>
 </head>
 <body>
@@ -97,10 +98,10 @@
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="wrap">
     <img class="logo" src="./controlplane.svg" alt="ControlPlane">
-    <p class="eyebrow">For teams already running OpenBao</p>
-    <h1>Open source, not on your own</h1>
-    <p class="strap">Enterprise for OpenBao: nobody is better placed to stand behind your estate.</p>
-    <p class="pitch">Most days you do not need us. Your estate runs, upgrades land, nobody gets paged to fix it. The subscription is for the other days. Who ships the patch when the CVE lands mid change freeze? Who picks up when something breaks? Whose name goes in the audit? Enterprise for OpenBao. Every time. On our hardened build or pure upstream. Your estate does not change; who stands behind it does.</p>
+    <p class="eyebrow" id="hero-eyebrow">For teams already running OpenBao</p>
+    <h1 id="hero-h1">Open source, not on your own</h1>
+    <p class="strap" id="hero-strap">Enterprise for OpenBao: nobody is better placed to stand behind your estate.</p>
+    <p class="pitch" id="hero-pitch">Most days you do not need us. Your estate runs, upgrades land, nobody gets paged to fix it. The subscription is for the other days. Who ships the patch when the CVE lands mid change freeze? Who picks up when something breaks? Whose name goes in the audit? Enterprise for OpenBao. Every time. On our hardened build or pure upstream. Your estate does not change; who stands behind it does.</p>
   </div>
 </header>
 
@@ -190,8 +191,14 @@
   <section id="form" aria-label="Map your support scope">
     <h2>Map your support scope</h2>
     <p style="max-width: 620px">Tell us how you run OpenBao and we will come back with your plugin-type scope and what the subscription would cover. A conversation with an engineer, not a script.</p>
-    <form name="openbao-support" method="POST" action="/thanks.html" data-netlify="true" style="margin-top: 22px">
+    <form name="openbao-support" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="company-website" style="margin-top: 22px">
       <input type="hidden" name="form-name" value="openbao-support">
+      <input type="hidden" name="variant" id="f-variant" value="cover">
+      <input type="hidden" name="utm_source" id="f-utm_source" value="">
+      <input type="hidden" name="utm_medium" id="f-utm_medium" value="">
+      <input type="hidden" name="utm_campaign" id="f-utm_campaign" value="">
+      <input type="hidden" name="utm_content" id="f-utm_content" value="">
+      <p class="hp" aria-hidden="true"><label>Company website<input type="text" name="company-website" tabindex="-1" autocomplete="off"></label></p>
       <div class="half">
         <label>Name<input type="text" name="name" autocomplete="name" required></label>
         <label>Work email<input type="email" name="email" autocomplete="email" required></label>
@@ -224,5 +231,52 @@
   <div class="wrap">ControlPlane &middot; Cloud native security for regulated industries. Enterprise for OpenBao provides hardened builds and enterprise support for OpenBao; every supported plugin remains standard open-source OpenBao. OpenBao is a project of the Linux Foundation. ControlPlane is not affiliated with or endorsed by the Linux Foundation.</div>
 </footer>
 
+
+<script>
+  // Ad-matched hero. ?v=source | page | audit swap the opening; anything else
+  // (or nothing) keeps the default "cover" hero already in the HTML above.
+  (function () {
+    var variants = {
+      source: {
+        eyebrow: "For teams already running OpenBao",
+        h1: "Support from the source",
+        strap: "OpenBao's top contributor heads our OpenBao team and maintains the project.",
+        pitch: "When you buy support from ControlPlane, the escalation path ends at the people who write the code, not a ticket queue three vendors deep. Your estate does not change; the bench behind it does. Enterprise for OpenBao, on our hardened build or pure upstream."
+      },
+      page: {
+        eyebrow: "For teams already running OpenBao",
+        h1: "Open source secrets. Covered.",
+        strap: "You chose OpenBao. Good call. Now the harder question: when it seals, who picks up?",
+        pitch: "Most days you do not need us. The subscription is for the other days: the patch that has to ship mid change freeze, the cluster that will not unseal, the question nobody on the mailing list is obliged to answer. Enterprise for OpenBao puts a named team and the people who work in the codebase behind the estate you already run."
+      },
+      audit: {
+        eyebrow: "For teams already running OpenBao",
+        h1: "The last box on the audit",
+        strap: "Your auditors do not mind that OpenBao is free. They mind that nobody is contractually behind it.",
+        pitch: "Enterprise for OpenBao adds hardened builds, long-term support with vulnerability patching, a signed VEX statement per CVE assessment and a named accountable party to the OpenBao you already run. The licence bill stays at zero. When the auditor asks who stands behind your secrets platform, you write down a company."
+      }
+    };
+    var params = new URLSearchParams(location.search);
+    var v = (params.get("v") || "").toLowerCase();
+    var t = variants[v];
+    if (!t) { v = "cover"; }
+    if (t) {
+      document.getElementById("hero-eyebrow").textContent = t.eyebrow;
+      document.getElementById("hero-h1").textContent = t.h1;
+      document.getElementById("hero-strap").textContent = t.strap;
+      document.getElementById("hero-pitch").textContent = t.pitch;
+    }
+    var set = function (id, val) { var el = document.getElementById(id); if (el) el.value = val; };
+    set("f-variant", v);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(function (k) { set("f-" + k, params.get(k) || ""); });
+    // Insight Tag hook (dormant until PARTNER_ID is set in the shared partial).
+    var form = document.querySelector('form[name="openbao-support"]');
+    if (form) form.addEventListener("submit", function () {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "openbao_support_submit", variant: v });
+      if (typeof window.lintrk === "function" && window.LINKEDIN_CONVERSION_ID) { window.lintrk("track", { conversion_id: window.LINKEDIN_CONVERSION_ID }); }
+    });
+  })();
+</script>
 </body>
 </html>

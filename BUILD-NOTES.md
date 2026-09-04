@@ -63,6 +63,29 @@ of "So can you." — this reader already picked OpenBao).
   control-plane.io/enterprise-for-openbao/ — verify the URL is still
   live at launch.
 
+## Ad-matched hero (added 2026-09-04)
+
+The hero swaps on `?v=` to match the campaign 2 awareness ads, the same
+mechanism as openbao_campaign_1. Default copy lives in the HTML (so no-JS
+and crawlers see it); a script at the foot of the page replaces the
+eyebrow, h1, strap and pitch when `v` is one of:
+
+- `source` (ad 4, maintainer): "Support from the source".
+- `page` (ad 5, pager): "Open source secrets. Covered." The strap asks
+  "when it seals, who picks up?" with no clock time and no 24/7, per the
+  house rule above. The ad itself says 2am; the page does not.
+- `audit` (ad 6, auditor): "The last box on the audit".
+- anything else, or nothing: the default "cover" hero.
+
+The form captures `variant` and `utm_source`, `utm_medium`, `utm_campaign`,
+`utm_content` as hidden fields, and submit pushes `openbao_support_submit`
+with the variant to `dataLayer` (and fires the LinkedIn conversion when
+`LINKEDIN_CONVERSION_ID` and the Insight Tag partial exist; neither is on
+this page yet). A honeypot field `company-website` is now on the form.
+
+Ad links for campaign 2 should use `utm_campaign=openbao-support` and the
+matching `v` so the metrics stay separate from campaign 1.
+
 ## Mechanics
 
 - Buildless static: index.html + thanks.html, publish root
